@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@theme {
+  --font-sans: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-input: rgba(255, 255, 255, 0.05);
+  --color-ring: #C3FF00;
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+
+  --color-primary: #C3FF00;
+  --color-primary-foreground: #000000;
+
+  --color-secondary: rgba(255, 255, 255, 0.05);
+  --color-secondary-foreground: #ffffff;
+
+  --color-muted: rgba(255, 255, 255, 0.05);
+  --color-muted-foreground: #a1a1aa;
+
+  --color-accent: rgba(195, 255, 0, 0.1);
+  --color-accent-foreground: #C3FF00;
+
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+
+  --radius-lg: 0px;
+  --radius-md: 0px;
+  --radius-sm: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+}
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-2xl border transition-all;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased font-mono;
+  }
+}
