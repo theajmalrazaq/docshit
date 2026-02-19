@@ -29,6 +29,7 @@ import pdfWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 import confetti from 'canvas-confetti';
 import JSZip from 'jszip';
 import { renderAsync } from 'docx-preview';
+import { jsPDF } from 'jspdf';
 import { cn } from './lib/utils';
 
 // Set up PDF.js worker
@@ -316,6 +317,39 @@ export default function App() {
     }
   };
 
+  const downloadTXT = () => {
+    if (!scanResult) return;
+    const blob = new Blob([scanResult.sanitizedText], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `SAFE_${scanResult.fileName.split('.')[0]}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const downloadPDF = () => {
+    if (!scanResult) return;
+    const doc = new jsPDF();
+    doc.setFont("courier", "normal");
+    doc.setFontSize(10);
+    const margin = 20;
+    const pageHeight = doc.internal.pageSize.height;
+    const lines = doc.splitTextToSize(scanResult.sanitizedText, 170);
+    let y = margin;
+    lines.forEach(line => {
+      if (y > pageHeight - margin) {
+        doc.addPage();
+        y = margin;
+      }
+      doc.text(line, margin, y);
+      y += 6;
+    });
+    doc.save(`SAFE_${scanResult.fileName.split('.')[0]}.pdf`);
+  };
+
   const reset = () => {
     if (fileUrl) URL.revokeObjectURL(fileUrl);
     setFile(null);
@@ -414,9 +448,17 @@ export default function App() {
                       </span>
                    </div>
                    {rightPanel === 'safe-text' && !scanResult.isEmpty && (
-                      <button onClick={copyToClipboard} className={cn("h-full px-4 md:px-6 py-2 border border-[#C3FF00] font-black uppercase text-[9px] md:text-[10px] transition-all bg-[#C3FF00] text-black hover:bg-[#b0e600] flex-1 md:flex-initial", copied ? "bg-emerald-500 border-emerald-500 text-white" : "")}>
-                        {copied ? "Copied" : "Copy"}
-                     </button>
+                     <div className="flex gap-2 flex-1 md:flex-initial">
+                        <button onClick={copyToClipboard} className={cn("flex-1 md:flex-initial px-4 md:px-6 py-2 border border-[#C3FF00] font-black uppercase text-[9px] md:text-[10px] transition-all bg-[#C3FF00] text-black hover:bg-[#b0e600]", copied ? "bg-emerald-500 border-emerald-500 text-white" : "")}>
+                          {copied ? "Copied" : "Copy"}
+                        </button>
+                        <button onClick={downloadTXT} className={cn("px-3 py-2 border font-black uppercase text-[9px] md:text-[10px] transition-all", isLight ? "border-zinc-200 bg-white hover:bg-zinc-50" : "border-zinc-800 bg-zinc-900 hover:bg-zinc-800")}>
+                          TXT
+                        </button>
+                        <button onClick={downloadPDF} className={cn("px-3 py-2 border font-black uppercase text-[9px] md:text-[10px] transition-all", isLight ? "border-zinc-200 bg-white hover:bg-zinc-50" : "border-zinc-800 bg-zinc-900 hover:bg-zinc-800")}>
+                          PDF
+                        </button>
+                     </div>
                    )}
                 </div>
               </div>
