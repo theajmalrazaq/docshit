@@ -2,10 +2,6 @@
 
 **DocShit** is a high-performance, brutalist document analysis tool designed to sanitize PDF and DOCX files for secure LLM (Large Language Model) usage. It acts as a digital shield, identifying and neutralizing prompt injections, hidden text, and malicious metadata before they reach your AI context.
 
-![Accent Color](https://img.shields.io/badge/Accent-%23C3FF00-brightgreen)
-![Privacy](https://img.shields.io/badge/Privacy-100%25%20Client--Side-blue)
-![Status](https://img.shields.io/badge/Status-Operational-success)
-
 ## 🛡️ Key Features
 
 - **Multi-Format Deep Scan**: Support for both PDF and DOCX files with full structural analysis.
@@ -18,13 +14,6 @@
 - **OCR Failure Detection**: Automatically identifies documents with no selectable text (handwritten/scanned images) and warns the user.
 - **100% Client-Side**: Your documents never leave your browser. Processing is entirely local for maximum privacy.
 
-## 🎨 Aesthetics & Design
-
-DocShit follows a **Brutalist Financial Terminal** aesthetic:
-- **Primary Palette**: Obsidian Black and Stark White.
-- **Accent**: Neon Lime (`#C3FF00`).
-- **Typography**: High-contrast Monospace for a raw, technical feel.
-- **Responsive Navigation**: Mobile-optimized layout with dedicated view-switching icons for on-the-go analysis.
 
 ## 🚀 Tech Stack
 
