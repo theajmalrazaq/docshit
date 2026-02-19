@@ -338,7 +338,7 @@ export default function App() {
         <div className="flex flex-col md:flex-row md:justify-between md:items-center shrink-0 gap-4 md:h-16">
            <div className="flex items-center justify-between w-full md:w-auto">
               <div className="flex items-center gap-3">
-                 <img src="/logo.svg" alt="DocShit Logo" className="w-8 h-8 md:w-10 md:h-10" />
+                 <img src="./logo.svg" alt="DocShit Logo" className="w-8 h-8 md:w-10 md:h-10" />
                  <h2 className="text-lg md:text-xl font-bold uppercase tracking-widest mt-1">docshit</h2>
               </div>
               {/* Mobile MobileView Toggle */}
@@ -391,7 +391,7 @@ export default function App() {
             <motion.div key="scanning" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="h-full flex flex-col items-center justify-center space-y-8">
                <div className={cn("p-8 border-2 border-dashed relative flex items-center justify-center transition-colors", isLight ? "border-zinc-200" : "border-zinc-800")}>
                   <Loader2 size={64} className="animate-spin text-[#C3FF00] opacity-20" />
-                  <img src="/logo.svg" alt="DocShit Logo" className="w-8 h-8 absolute animate-pulse-slow object-contain" />
+                  <img src="./logo.svg" alt="DocShit Logo" className="w-8 h-8 absolute animate-pulse-slow object-contain" />
                </div>
                <div className="text-center space-y-2">
                   <h3 className="text-xl font-black uppercase tracking-widest">Scanning</h3>
@@ -493,7 +493,7 @@ export default function App() {
             <motion.div key="home" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full flex items-center justify-center">
                <div className="max-w-md w-full text-center space-y-8">
                   <div className="space-y-4">
-                     <img src="/logo.svg" alt="DocShit Logo" className="w-24 h-24 mx-auto mb-2 object-contain drop-shadow-2xl" />
+                     <img src="./logo.svg" alt="DocShit Logo" className="w-24 h-24 mx-auto mb-2 object-contain drop-shadow-2xl" />
                      <div className="space-y-1">
                         <h1 className="text-4xl font-black uppercase tracking-widest mt-6">DocShit</h1>
                         <p className="text-xs font-black uppercase tracking-[0.15em] opacity-50">Sanitize your LLM inputs.</p>
@@ -534,7 +534,7 @@ export default function App() {
              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className={cn("relative w-full max-w-2xl p-8 space-y-6 border shadow-2xl transition-colors", isLight ? "border-zinc-200 bg-white" : "border-zinc-800 bg-zinc-900")}>
                 <div className="flex justify-between items-start">
                    <div className="flex items-center gap-4">
-                      <img src="/logo.svg" alt="DS" className="w-12 h-12 object-contain" />
+                      <img src="./logo.svg" alt="DS" className="w-12 h-12 object-contain" />
                       <div>
                          <span className={cn("text-[8px] font-black uppercase border px-2 py-0.5", isLight ? "border-zinc-200 text-zinc-400" : "border-zinc-700 text-zinc-500")}>
                            {selectedIssue.type} • P{selectedIssue.page}
